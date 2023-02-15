@@ -2,13 +2,11 @@
 Start By Capgemini
 
 ## IAC
-
 IaC ou infraestructure as a code (infraestrutura como código), consiste em escrever o que deseja implementar em código.
 No lugar de processos manuais, de gerenciamento e provisionamento da infraestrutura, usamos trexos de códigos.
 Os benefícios do Iac são: Código declarativo, redução de risco, rasteramento, colaboração, escalabilidade e velocidade.
 
 ## Terraform
-
 O terraform é uma ferramenta de infraestrutura como código; criada pela HashiCorp, que permite gerenciar e provisionar recursos na Cloud ou Local usando arquivo onde podemos versionar, reutilizar e compartilhar.
 
 Terraform <-> Terraform Provider <-> Target API
@@ -16,7 +14,6 @@ Terraform <-> Terraform Provider <-> Target API
 Write (escrever) -> Plan (verificação e validação) -> Apply (construção da infraestrutura)
 
 ## HCL
-
 HCL ou HashiCorp Configuration Language é a linguagem utilizada nos arquivos de configuração de várias ferramentas criadas pela HashiCorp.
 
 ## BLOCK TYPE
@@ -37,7 +34,6 @@ HCL ou HashiCorp Configuration Language é a linguagem utilizada nos arquivos de
 **Terraform**: Configuração do terraform;
 
 ## PROVIDERS
-
 O terraform conta com plugins chamados de "providers" usados para interagir com provedores de nuvem, provedores Saas e outras APIs.
 Tipos: Oficial, Parceiros, Comunidade ou Próprio.
 Usando o provider AWS podemos interagir com diversos resursos da Amazon Web Services (AWS).
@@ -49,7 +45,6 @@ Usando o provider AWS podemos interagir com diversos resursos da Amazon Web Serv
 
 
 ## Terraform Init
-
 O comando terraform init é utilizado para inicializar o diretório.
 A inicialização executa vária etapas e algumas verificações no arquivo do diretório preparando o mesmo para uso.
 
@@ -59,8 +54,8 @@ A inicialização executa vária etapas e algumas verificações no arquivo do d
 
 -migrate-state: Reconfigura o backend e migra as informações para o state atual.
 
-## Variáveis
 
+## Variáveis
 Variável é o nome dado para definir um ou mais valores que são manipulados durante a execução do terraform.
 
 Podendo ser usado para:
@@ -68,6 +63,48 @@ Podendo ser usado para:
 + Aplicar uma personalização sem a necessidade de editar o código
 + Evitar a repetição de valores no código, minimizando o trabalho operacional.
 
+Depois de declaradas as variáveis podem ser definidas das seguintes formas: 
+
++ No workspace
++ Linha de comando, usando o -var
++ Arquivo com a extensão .tfvars
++ Como variável de ambiente
+
+
+## Output
+O output pode nos disponibilizar informações sobre a infraestrutura provisionada via linha de comando ou expor informações para outras configurações do terraform.
+
+
+## State
+O state é o local onde o terraform armazena o estado e configurações da infraestrutura gerenciada.
+O terraform usa essas informações para mapear o mundo real, acompanhar metadados e melhorar o desempenho de grandes infraestruturas.
+Por padrão esse estado é armazenado em um arquivo chamado terraform.state dentro do diretório de trabalho.
+
+
+## Remote State
+Com o remote state temos o nosso arquivo de estado em um local remoto onde vários colaboradores possam usar de forma centralizada.
+
+
+## State Locking
+Se suportado pelo backend, o terraform poderá bloquear o uso do state caso alguma operação esteja em andamento.
+
+
+## Count
+Por padrão o resource block cria somente um recurso.
+Com o count podemos aproveitar o mesmo bloco de configuração para criar mais de um recurso.
+
+## For_each
+O for_each tem a mesma função do count, porém podemos utilizar valores de uma lista.
+
+## Locals
+O locals é a forma que temos para atribuir um nome e uma expressão (se refere ou calcula valores dentro de uma configuração) e usá-la várias vezes sem precisar repeti-la.
+
+## Dynamic Blocks
+Algumas vezes precisamos repetir sub-blocos debtri do bloco de resources, e isso deixa nosso código enorme.
+O dynamic blocks nos ajuda a ter vários sub-blocos congifurados de forma dinânimca e com menos código.
+
+## Módulos
+Módulos são conjuntos de arquivos .tf criados para serem usados juntos. Dessa forma facilita a reutilização do código.
 
 
 ### LAB01 - INSTALAÇÃO
@@ -104,3 +141,43 @@ Atividade 01: Executando o Init
 Atividade 01: Criar um bucket S3 na AWS
 
 Atividade 02: Apagar um bucket S3 na AWS
+
+### LAB06 - VARIÁVEIS
+Atividade 01: Usar variáveis
+
+### LAB07 - OUTPUTS
+Atividade 01: Usar output
+
+### LAB08 - STATE
+Atividade 01: Criar o S3
+
+Atividade 02: Criar o DynamoDB
+
+Atividade 03: Configurar o remote state
+
+Atividade 04: Validar o uso do remote state
+
+### LAB09 - IMPORT
+Atividade 01: Criar o S3
+
+Atividade 02: Importar S3
+
+### LAB10 - MOVENDO RECURSOS
+Atividade 01: Criar o S3
+
+Atividade 02: Renomear bloco
+
+Atividade 03: Mover para outro state
+
+### LAB11 - COUNT
+Atividade 01: Usar o count
+
+### LAB12 - FOR_EACH
+Atividade 01: Usar o for_each
+
+### LAB13 - LOCALS
+Atividade 01: Usar o locals
+
+### LAB14 - DYNAMIC BLOCKS
+Atividade 01: Usar o dynamic blocks
+
