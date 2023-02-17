@@ -9,7 +9,7 @@ Os benefícios do IaC são: Código declarativo, redução de risco, rastreament
 ## Terraform
 O terraform é uma ferramenta de infraestrutura como código; criada pela HashiCorp, que permite gerenciar e provisionar recursos na Cloud ou Local usando arquivo onde podemos versionar, reutilizar e compartilhar.
 
-Terraform <-> Terraform Provider <-> Target API
+Terraform (Local) <-> Terraform Provider (Plugins) <-> Target API (Cloud)
 
 Write (escrever) -> Plan (verificação e validação) -> Apply (construção da infraestrutura)
 
