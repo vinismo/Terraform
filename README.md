@@ -1,10 +1,10 @@
 # Terraform
 Start By Capgemini
 
-## IAC
+## IaC
 IaC ou infraestructure as a code (infraestrutura como código), consiste em escrever o que deseja implementar em código.
 No lugar de processos manuais, de gerenciamento e provisionamento da infraestrutura, usamos trexos de códigos.
-Os benefícios do Iac são: Código declarativo, redução de risco, rasteramento, colaboração, escalabilidade e velocidade.
+Os benefícios do IaC são: Código declarativo, redução de risco, rastreamento, colaboração, escalabilidade e velocidade.
 
 ## Terraform
 O terraform é uma ferramenta de infraestrutura como código; criada pela HashiCorp, que permite gerenciar e provisionar recursos na Cloud ou Local usando arquivo onde podemos versionar, reutilizar e compartilhar.
@@ -16,7 +16,7 @@ Write (escrever) -> Plan (verificação e validação) -> Apply (construção da
 ## HCL
 HCL ou HashiCorp Configuration Language é a linguagem utilizada nos arquivos de configuração de várias ferramentas criadas pela HashiCorp.
 
-## BLOCK TYPE
+## Block Type
 **Resource**: Descreve um ou mais objetos de infraestrutura a ser provisionado;
 
 **Data**: Permite que usemos informações de fora do terraform;
@@ -29,31 +29,29 @@ HCL ou HashiCorp Configuration Language é a linguagem utilizada nos arquivos de
 
 **Locals**: Atribui valor a uma expressão;
 
-**Module**: Conjunto de multiplos resources;
+**Module**: Conjunto de múltiplos resources;
 
 **Terraform**: Configuração do terraform;
 
-## PROVIDERS
-O terraform conta com plugins chamados de "providers" usados para interagir com provedores de nuvem, provedores Saas e outras APIs.
+## Providers
+O terraform conta com plugins chamados de "providers" usados para interagir com provedores de nuvem, provedores SaaS e outras APIs.
 Tipos: Oficial, Parceiros, Comunidade ou Próprio.
-Usando o provider AWS podemos interagir com diversos resursos da Amazon Web Services (AWS).
+Usando o provider AWS podemos interagir com diversos recursos da Amazon Web Services (AWS).
 
 **Métodos de autenticação**: 
 + Acesso direto usando credenciais do usuário
 + Acesso por assume role
 + Acesso usando IAM Instance Profile (EC2)
 
-
 ## Terraform Init
 O comando terraform init é utilizado para inicializar o diretório.
-A inicialização executa vária etapas e algumas verificações no arquivo do diretório preparando o mesmo para uso.
+A inicialização executa várias etapas e algumas verificações no arquivo do diretório preparando o mesmo para uso.
 
 -upgrade: Atualiza módulos, provider e plugins.
 
 -reconfigure: Reconfigura o backend.
 
 -migrate-state: Reconfigura o backend e migra as informações para o state atual.
-
 
 ## Variáveis
 Variável é o nome dado para definir um ou mais valores que são manipulados durante a execução do terraform.
@@ -70,24 +68,19 @@ Depois de declaradas as variáveis podem ser definidas das seguintes formas:
 + Arquivo com a extensão .tfvars
 + Como variável de ambiente
 
-
 ## Output
 O output pode nos disponibilizar informações sobre a infraestrutura provisionada via linha de comando ou expor informações para outras configurações do terraform.
-
 
 ## State
 O state é o local onde o terraform armazena o estado e configurações da infraestrutura gerenciada.
 O terraform usa essas informações para mapear o mundo real, acompanhar metadados e melhorar o desempenho de grandes infraestruturas.
 Por padrão esse estado é armazenado em um arquivo chamado terraform.state dentro do diretório de trabalho.
 
-
 ## Remote State
 Com o remote state temos o nosso arquivo de estado em um local remoto onde vários colaboradores possam usar de forma centralizada.
 
-
 ## State Locking
 Se suportado pelo backend, o terraform poderá bloquear o uso do state caso alguma operação esteja em andamento.
-
 
 ## Count
 Por padrão o resource block cria somente um recurso.
@@ -100,12 +93,36 @@ O for_each tem a mesma função do count, porém podemos utilizar valores de uma
 O locals é a forma que temos para atribuir um nome e uma expressão (se refere ou calcula valores dentro de uma configuração) e usá-la várias vezes sem precisar repeti-la.
 
 ## Dynamic Blocks
-Algumas vezes precisamos repetir sub-blocos debtri do bloco de resources, e isso deixa nosso código enorme.
-O dynamic blocks nos ajuda a ter vários sub-blocos congifurados de forma dinânimca e com menos código.
+Algumas vezes precisamos repetir sub-blocos dentro do bloco de resources, e isso deixa nosso código enorme.
+O dynamic blocks nos ajuda a ter vários sub-blocos configurados de forma dinâmica e com menos código.
 
 ## Módulos
 Módulos são conjuntos de arquivos .tf criados para serem usados juntos. Dessa forma facilita a reutilização do código.
 
+## Workspaces
+Com o workspaces podemos ter um state ou mais utilizando o mesmo diretório de trabalho.
+Cada workspace possui suas próprias configurações como se fosse diretórios diferentes, simplificando o desenvolvimento e manutenção do código.
+
+## Validação de Entrada
+O parâmetro validation dento do bloco de variável pe usado para analisar se o valor fornecido para a variável atende os requisitos.
+
+## Precondition e Postcondition
+O precondition e o postcondition podem ser utilizados para criar regras de validação nos blocos resources, datasource e outputs.
+O precondition é executado antes da avaliação do objeto em que foi configurado.
+O postcondition é executado depois da avaliação do objeto em que foi configurado.
+
+Processo de validação: input validation -> precondition -> plan -> postcondition
+
+## Projeto
+Provisionamento de infra-estrutura para uma aplicação em multiplas camadas.
+
++ Network: Base para conexão entre os serviços.
++ Frontend: Instâncias em auto-scaling onde irá rodar a aplicação Web.
++ Backend: API Rest rodando com API Gateway e Lambdas.
++ Database: Base de dados para armazenar os dados da aplicação.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### LAB01 - INSTALAÇÃO
 Atividade 01 - Instalação do AWS CLI
@@ -180,4 +197,17 @@ Atividade 01: Usar o locals
 
 ### LAB14 - DYNAMIC BLOCKS
 Atividade 01: Usar o dynamic blocks
+
+### LAB15 - MÓDULOS
+Atividade 01: Usar módulos
+
+### LAB16 - WORKSPACES 
+Atividade 01: Usar workspaces
+
+### LAB17 - VALIDAÇÃO
+Atividade 01: Usar validação de entrada
+
+Atividade 02: Usar precondition
+
+Atividade 03: Usar postcondition
 
