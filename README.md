@@ -1,5 +1,4 @@
 # Terraform
-Start By Capgemini
 
 ## IaC
 IaC ou infraestructure as a code (infraestrutura como código), consiste em escrever o que deseja implementar em código.
